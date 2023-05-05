@@ -72,14 +72,29 @@ def retrived(query):
         image_distance = distances[image_index]
         d.append(image_distance)
         img.append(image_path)
-        st.table(d)
-        st.table(img)
-        st.table(cap)
     return d,img,cap
 
+
+
 # Set up the Streamlit app
-st.title("TensorFlow Model API")
+st.title("ContentCompanion-An AI Powered Content based Search Engine")
 uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
+if uploaded_file:
+    st.write(uploaded_file)
+    st.image(uploaded_file, width=224,caption='A Query Image')
+# Load image from file
+image = Image.open(uploaded_file)
+width = 150
+height = 150
+# Display image in Streamlit
+# images=['images/47871819_db55ac4699_0_.jpg','images/47871819_db55ac4699_0.jpg','images/47871819_db55ac4699_1_.jpg',
+#         'images/47871819_db55ac4699_1.jpg','images/47871819_db55ac4699_2_.jpg']
+# row = st.container()
+# with row:
+#     for i in range(len(images)):
+#         image = images[i]
+submit_button = st.button("Predict")
+
 # Define the prediction endpoint
 @st.cache_data
 def predict_endpoint():
@@ -87,11 +102,46 @@ def predict_endpoint():
 
     if uploaded_file is not None:
         # Get the prediction
-        prediction = retrived(uploaded_file)
-
+        d,img,cap = retrived(uploaded_file)
+        imges=[]
+        py_list = [item[0] for item in cap]
+        filtered_df = train[train.index.isin(py_list)]
+        cap=filtered_df['caption']
+        for i in range(len(img)):
+            p=img[i].split('model_images/')[1]
+            imges.append(p)
         # Show the prediction
-        st.write(prediction)
+        df = pd.DataFrame({'Path': imges, 'Caption': cap, 'Similarity distance': d})
+        st.header('Results-Retrieved Content by our Model')
+        st.dataframe(df)
+        # Define the number of images to display in a row
+        num_images_per_row = 5
 
-# Run the app
-if __name__ == "__main__":
+# Loop over the rows of the dataframe and display the images
+        for i, row in df.iterrows():
+            file_name = row["Path"]
+            file_name=str("images/")+file_name
+            cap=row["Caption"]
+            sim_distance = row["Similarity distance"]
+    # Create the caption for the image
+            caption = f"cap{sim_distance:.4f}"
+    # Display the image
+            if i % num_images_per_row == 0:
+                col1, col2, col3, col4, col5 = st.columns(num_images_per_row)
+            with col1:
+                st.image(file_name, width=150, caption=caption)
+            with col2:
+                st.image(file_name, width=150, caption=caption)
+            with col3:
+                st.image(file_name, width=150, caption=caption)
+            with col4:
+                st.image(file_name, width=150, caption=caption)
+            with col5:
+                st.image(file_name, width=150,caption=caption)
+
+# If the button is clicked and a file is uploaded, call the predict_endpoint function
+if submit_button and uploaded_file is not None:
     predict_endpoint()
+# Run the app
+# if __name__ == "__main__":
+#     predict_endpoint()
