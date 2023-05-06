@@ -44,7 +44,7 @@ Parameters:
 * Adding a footer at the bottom of the page.
 * Note: The code for running the app at the end is commented out, but you can uncomment it if you want to run the app directly * without using the Streamlit command.
 **Model:**
-* [Notebook]()
+* [Notebook](https://github.com/asjad895/SE_streamlit_deployment/tree/main/Notebook)
 ## Deployment:
 * streamlit webapp is deployed on streamlit cloud,you can access it by this link-
 
