@@ -141,9 +141,9 @@ a tuple of numpy arrays consisting of pairs of images and their corresponding la
 ## Construct Siamese Network
 
 **def construct_siamese_network():**
-    * Constructs a Siamese network for image comparison.
-    * Returns:
-        * model (tf.keras.Model): The constructed Siamese network model.
+* Constructs a Siamese network for image comparison.
+* Returns:
+* model (tf.keras.Model): The constructed Siamese network model.
 
     *Algorithm:
     * 1. Define the input layers for the two input images (imgA and imgB) with shape (224, 224, 3).
