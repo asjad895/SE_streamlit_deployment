@@ -80,9 +80,23 @@ st.set_page_config(
 
 # Set up the Streamlit app
 st.title("ContentCompanion-An AI Powered Content based Search Engine")
-uploaded_file = st.file_uploader(f"Choose an image...📩", type=["jpg", "jpeg", "png"])
+st.markdown(
+    f"<span style='color: rgb(91, 166, 236);'>Choose an image...📩</span>",
+    unsafe_allow_html=True
+)
+
+uploaded_file = st.file_uploader(f"👇", type=["jpg", "jpeg", "png"])
 n=5
-n=st.number_input(label=f"Choose How many content you want to see! 5,10,15...🕠",min_value=5,max_value=20)
+st.markdown(
+    f"<span style='color: rgb(91, 166, 236);'>Choose How many content you want to see! 5, 10, 15... 🕠</span>",
+    unsafe_allow_html=True
+)
+n = st.number_input("👇",
+    min_value=5,
+    max_value=20
+)
+
+
 
 st.info(f"No of queried Image_{n}:",icon="🤖")
 
@@ -129,13 +143,13 @@ def predict_endpoint():
             if i % num_images_per_row == 0:
                 col1, col2, col3= st.columns(num_images_per_row)
                 with col1:
-                    st.image(file_name, width=150, caption=caption)
+                    st.image(file_name, use_column_width=True, caption=caption)
             if i % num_images_per_row == 1:
                 with col2:
-                    st.image(file_name, width=150, caption=caption)
+                    st.image(file_name, use_column_width=True, caption=caption)
             if i % num_images_per_row == 2:
                 with col3:
-                    st.image(file_name, width=150, caption=caption)
+                    st.image(file_name, use_column_width=True, caption=caption)
             # if i % num_images_per_row == 3:
             #     with col4:
             #         st.image(file_name, width=150, caption=caption)
@@ -146,9 +160,26 @@ def predict_endpoint():
 
 # If the button is clicked and a file is uploaded, call the predict_endpoint function
 if submit_button and uploaded_file is not None:
-    predict_endpoint()
+    with st.spinner("Wait for Results....."):
+        predict_endpoint()
+
 else:
-    st.warning("Upload your Query Content Before Search👍")
+    if submit_button:
+        with st.spinner("Wait for Results....."):
+            st.warning("Upload your Query Content Before Search👍")
+
+page=["AI Presentation","Documenation"]
+with st.sidebar:
+    op=st.selectbox(label="Select A Page:",options=page)
+    if op=="AI Presentation":
+        st.info("This is the Presenation for Ai Hackathon on Ai Planet.")
+        st.markdown("[Ai Presentation](https://linkedin.com)")
+    if op=="Documenation":
+        st.info("This is Documenation for this web app and Notebook/Model.")
+        st.markdown("[Documentation](https://linkedin.com)")
+
+
+
 # Run the app
 # if __name__ == "__main__":
 #     predict_endpoint()
