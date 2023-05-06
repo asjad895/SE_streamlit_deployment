@@ -42,4 +42,7 @@ Displaying the results in the UI.
 Adding a sidebar with options for AI Presentation and Documentation.
 Adding a footer at the bottom of the page.
 Note: The code for running the app at the end is commented out, but you can uncomment it if you want to run the app directly without using the Streamlit command.
+## Deployment:
+streamlit webapp is deployed on streamlit cloud,you can access it by this link-
+href="https://contentcompanion.streamlit.app/"
 # Demo:
