@@ -172,7 +172,7 @@ with st.sidebar:
     op=st.selectbox(label="Select A Page:",options=page)
     if op=="AI Presentation":
         st.info("This is the Presenation for Ai Hackathon on Ai Planet.")
-        st.markdown("[Ai Presentation](http://127.0.0.1:5500/AI_Presentation/page10.html)")
+        st.markdown("[Ai Presentation](https://asjad895.github.io/SE_presentation/)")
     if op=="Documenation":
         st.info("This is Documenation for this web app and Notebook/Model.")
         st.markdown("[Documentation](https://github.com/asjad895/SE_streamlit_deployment/blob/main/README.md)")
