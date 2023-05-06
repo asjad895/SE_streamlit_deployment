@@ -1,5 +1,5 @@
  # ContentCompanion-An Ai Powered content based Search Engine-Notebook
-
+## Data preprocessing
 **Function Name: create_custom_df**
 
 * Input:
@@ -44,7 +44,7 @@
 * convert the loaded image to a numpy array using the img_to_array function of keras.preprocessing.image module
 * normalize the pixel values in the range of 0 to 1 by dividing the array by 255
 * return the resulting numpy array
-
+## Data Analysis/Visualisation
 **display_images()**
 * input: temp_df (pandas.DataFrame): a dataframe containing image path, caption and label
 * output:
@@ -63,7 +63,7 @@ None, it displays the images in a 5x5 grid with caption and label
 * set the title of the subplot using plt.title method with the created string
 * turn off the axis of the subplot using plt.axis("off")
 
-
+## Data Labeling/splitting
 **Create_X_y()**
 * Input:
 * csv_path: a string indicating the path to a CSV file containing the image data and labels.
@@ -79,7 +79,7 @@ None, it displays the images in a 5x5 grid with caption and label
 * Preprocess the images by resizing and normalizing them.
 * Add the preprocessed image and label to the arrays.
 * Return the preprocessed image data and labels as numpy arrays.
-
+## Build pair images for siamese network
 
 **make_pairs():**
 * *The function make_pairs(images, labels) takes in a set of images and their corresponding labels and returns pairs of images along with their labels. The pairs are generated such that one image in the pair is from the same class as the other image (positive pair) and the other image is from a different class (negative pair). This is useful for training a Siamese network, which learns to compare and classify pairs of images.*
@@ -110,7 +110,8 @@ a tuple of numpy arrays consisting of pairs of images and their corresponding la
 * Return the tuple of numpy arrays.
 * *training a Siamese network, which learns to compare two images and determine if they are similar or dissimilar. By generating pairs of images with known labels, we can train the Siamese network to learn these relationships and make accurate predictions on new image pairs.*
 
-* *MODEl Building:*
+## MODEl Building:
+
 **Siamese function**
 * This function defines a Siamese neural network architecture that takes as input images of shape (inputShape) and produces embeddings of size embeddingDim.
 
@@ -119,7 +120,7 @@ a tuple of numpy arrays consisting of pairs of images and their corresponding la
 * embeddingDim: integer representing the size of the output embeddings (default is 300).
 * Output
 * Returns a Siamese neural network model with two identical subnetworks, each of which processes one of the two input images and returns its embedding.
-
+## Defing Loss Function-For Training
 **contrastive_loss function**
 * This function defines a contrastive loss function that is used to train the Siamese neural network. It takes as input the true labels (y), predicted distances between image embeddings (preds), and a margin value margin that determines the minimum distance between embeddings of the same class.
 
@@ -129,7 +130,7 @@ a tuple of numpy arrays consisting of pairs of images and their corresponding la
 * margin: float representing the margin value that determines the minimum distance between embeddings of the same class (default is 1).
 * Output
 * Returns a tensor representing the contrastive loss.
-
+## Similarity Score
 **euclidean_distance function**
 * This function computes the Euclidean distance between a pair of input embeddings.
 
@@ -137,8 +138,9 @@ a tuple of numpy arrays consisting of pairs of images and their corresponding la
 * vectors: a list of two tensors representing the input embeddings.
 * Output
 * Returns a tensor representing the Euclidean distance between the input embeddings.
+## Construct Siamese Network
+
 **def construct_siamese_network():**
-    """
     * Constructs a Siamese network for image comparison.
     * Returns:
         * model (tf.keras.Model): The constructed Siamese network model.
@@ -158,10 +160,10 @@ a tuple of numpy arrays consisting of pairs of images and their corresponding la
     * Output:
         * - distance: Euclidean distance between the features of imgA and imgB.
 
-    * Example:
-        * model = construct_siamese_network()
 
-*Compute the Euclidean distance between the feature vectors*
+
+
+* *Lambda: Compute the Euclidean distance between the feature vectors*
 ```python
    distance = Lambda(euclidean_distance)([featsA, featsB])
    ```
@@ -169,6 +171,7 @@ a tuple of numpy arrays consisting of pairs of images and their corresponding la
 
 * The *Lambda* layer is commonly used when you need to perform custom computations or apply custom functions within a Keras model. It allows you to incorporate arbitrary operations into the model's computational graph, making it a versatile tool for defining complex models and custom loss functions.
 
+## Model Testing
 **Function Name: retrived(query)**
 
 * Input:
