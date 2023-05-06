@@ -181,21 +181,45 @@ with st.sidebar:
 
 # Add a footer at the bottom of the page
 footer_html = """
+
 <style>
 .footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #f8f9fa;
     padding: 10px 0;
     text-align: center;
+    height: 100px; /* Height of the footer */
+    background-color: #110909;
 }
 </style>
-
-<div class="footer">
-    <p>This is a footer</p>
-</div>
+<div>
+    <footer class="footer">
+        <section class="mb-4">
+          <a 
+            class="btn text-white btn-floating m-5"
+            style="background-color: #0481c4;"
+            href="https://www.linkedin.com/in/md-asjad-314501211/"role="button">
+            <i class="fab fa-linkedin-in me-2"></i>
+            Linkedin
+          </a>
+          <!-- Github -->
+          <a
+            class="btn text-white btn-floating m-5"
+            style="background-color: #000000;"
+            href="https://github.com/asjad895"role="button">
+            <i class="fab fa-github me-2"></i>
+            Github
+          </a>
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(23, 3, 102, 0.2);">
+        © 2023 Copyright:
+        <a class="text-white" href="#">Evolve.ai.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+  </div>
 """
 st.markdown(footer_html, unsafe_allow_html=True)
 # Run the app
