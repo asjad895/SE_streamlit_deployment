@@ -173,13 +173,31 @@ with st.sidebar:
     op=st.selectbox(label="Select A Page:",options=page)
     if op=="AI Presentation":
         st.info("This is the Presenation for Ai Hackathon on Ai Planet.")
-        st.markdown("[Ai Presentation](https://linkedin.com)")
+        st.markdown("[Ai Presentation](http://127.0.0.1:5500/AI_Presentation/page10.html)")
     if op=="Documenation":
         st.info("This is Documenation for this web app and Notebook/Model.")
-        st.markdown("[Documentation](https://linkedin.com)")
+        st.markdown("[Documentation](https://github.com/asjad895/SE_streamlit_deployment/blob/main/README.md)")
 
 
+# Add a footer at the bottom of the page
+footer_html = """
+<style>
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 10px 0;
+    text-align: center;
+}
+</style>
 
+<div class="footer">
+    <p>This is a footer</p>
+</div>
+"""
+st.markdown(footer_html, unsafe_allow_html=True)
 # Run the app
 # if __name__ == "__main__":
 #     predict_endpoint()
