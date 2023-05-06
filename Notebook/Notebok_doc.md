@@ -153,6 +153,14 @@ a tuple of numpy arrays consisting of pairs of images and their corresponding la
 
     * Example:
         * model = construct_siamese_network()
+
+*Compute the Euclidean distance between the feature vectors*
+'''python
+distance = Lambda(euclidean_distance)([featsA, featsB])'''
+*In this case, Lambda takes the euclidean_distance function as an argument and creates a layer that applies this function to the inputs [featsA, featsB]. The resulting distance represents the output of the layer, which is the Euclidean distance between the feature vectors.
+
+* The *Lambda* layer is commonly used when you need to perform custom computations or apply custom functions within a Keras model. It allows you to incorporate arbitrary operations into the model's computational graph, making it a versatile tool for defining complex models and custom loss functions.
+
 **Function Name: retrived(query)**
 
 * Input:
