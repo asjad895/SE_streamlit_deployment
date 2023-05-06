@@ -38,7 +38,7 @@
 * img_size (int): size to which the image should be resized, default is 224
 * output:
 * img (numpy.ndarray): array representation of the image
-*Algorithm:*
+* *Algorithm:*
 * load the image from the specified path using the load_img function of keras.preprocessing.image module
 * convert the loaded image to a numpy array using the img_to_array function of keras.preprocessing.image module
 * normalize the pixel values in the range of 0 to 1 by dividing the array by 255
@@ -47,7 +47,7 @@
 * input: temp_df (pandas.DataFrame): a dataframe containing image path, caption and label
 * output:
 None, it displays the images in a 5x5 grid with caption and label
-algorithm:
+* *Algorithm:*
 * reset the index of the temp_df to start from 0 using the reset_index method
 * create a figure of size 20x20 using plt.figure method
 * initialize a counter n to 0
@@ -60,6 +60,7 @@ algorithm:
 * create a string a with the label followed by a new line character "\n" and join it with the caption using the join method * and textwrap.wrap function to wrap the caption into multiple lines of length 20
 * set the title of the subplot using plt.title method with the created string
 * turn off the axis of the subplot using plt.axis("off")
+
 **Create_X_y()**
 * Input:
 * csv_path: a string indicating the path to a CSV file containing the image data and labels.
@@ -67,16 +68,16 @@ algorithm:
 * Output:
 * X: a numpy array containing the preprocessed image data.
 * y: a numpy array containing the labels.
-*Algorithm:*
-*Read in the CSV file containing the image data and labels.
-*Extract the image paths and labels from the CSV file.
-*Initialize empty arrays to hold the preprocessed image data and labels.
-*Loop over the image paths and load in the images.
-*Preprocess the images by resizing and normalizing them.
-*Add the preprocessed image and label to the arrays.
+* *Algorithm:*
+* Read in the CSV file containing the image data and labels.
+* Extract the image paths and labels from the CSV file.
+* Initialize empty arrays to hold the preprocessed image data and labels.
+* Loop over the image paths and load in the images.
+* Preprocess the images by resizing and normalizing them.
+* Add the preprocessed image and label to the arrays.
 * Return the preprocessed image data and labels as numpy arrays.
 **make_pairs():**
-T* he function make_pairs(images, labels) takes in a set of images and their corresponding labels and returns pairs of images along with their labels. The pairs are generated such that one image in the pair is from the same class as the other image (positive pair) and the other image is from a different class (negative pair). This is useful for training a Siamese network, which learns to compare and classify pairs of images.
+* *The function make_pairs(images, labels) takes in a set of images and their corresponding labels and returns pairs of images along with their labels. The pairs are generated such that one image in the pair is from the same class as the other image (positive pair) and the other image is from a different class (negative pair). This is useful for training a Siamese network, which learns to compare and classify pairs of images.*
 
 
 * In a Siamese network, pairs of images are passed through two identical neural networks and the outputs of the networks are compared to determine if the pair of images belong to the same class or not. This approach is useful when we don't have enough labeled data for each class or when we want to learn similarity between two images rather than classify them directly. By training on pairs of images, the network learns to distinguish between different classes and generalize to unseen images.
@@ -86,7 +87,7 @@ T* he function make_pairs(images, labels) takes in a set of images and their cor
 * labels: a numpy array of corresponding labels for each image
 * Output:
 a tuple of numpy arrays consisting of pairs of images and their corresponding labels, where one image in the pair is similar to the other, and one image in the pair is dissimilar
-*Algorithm:*
+* *Algorithm:*
 * Initialize an empty list to hold the pairs of images and their corresponding labels.
 * Get the number of unique labels in the dataset.
 * Loop over each image in the dataset:
@@ -102,13 +103,13 @@ a tuple of numpy arrays consisting of pairs of images and their corresponding la
 * j. Add the label 0 to the list of pairLabels to indicate that the pair of images is dissimilar.
 * Convert the list of pairs of images and their corresponding labels to numpy arrays.
 * Return the tuple of numpy arrays.
-*training a Siamese network, which learns to compare two images and determine if they are similar or dissimilar. By generating pairs of images with known labels, we can train the Siamese network to learn these relationships and make accurate predictions on new image pairs.*
+* *training a Siamese network, which learns to compare two images and determine if they are similar or dissimilar. By generating pairs of images with known labels, we can train the Siamese network to learn these relationships and make accurate predictions on new image pairs.*
 
-*MODEl Building-*
+* *MODEl Building-*
 **Siamese function**
-*This function defines a Siamese neural network architecture that takes as input images of shape (inputShape) and produces embeddings of size embeddingDim.
+* This function defines a Siamese neural network architecture that takes as input images of shape (inputShape) and produces embeddings of size embeddingDim.
 
-*Input parameters
+*Input parameters*
 * inputShape: tuple representing the shape of the input images to the network.
 * embeddingDim: integer representing the size of the output embeddings (default is 300).
 * Output
@@ -123,6 +124,7 @@ a tuple of numpy arrays consisting of pairs of images and their corresponding la
 * margin: float representing the margin value that determines the minimum distance between embeddings of the same class (default is 1).
 * Output
 * Returns a tensor representing the contrastive loss.
+
 **euclidean_distance function**
 * This function computes the Euclidean distance between a pair of input embeddings.
 
@@ -158,7 +160,7 @@ a tuple of numpy arrays consisting of pairs of images and their corresponding la
 ```python
    distance = Lambda(euclidean_distance)([featsA, featsB])
    ```
-*In this case, Lambda takes the euclidean_distance function as an argument and creates a layer that applies this function to the inputs [featsA, featsB]. The resulting distance represents the output of the layer, which is the Euclidean distance between the feature vectors.
+* In this case, Lambda takes the euclidean_distance function as an argument and creates a layer that applies this function to the inputs [featsA, featsB]. The resulting distance represents the output of the layer, which is the Euclidean distance between the feature vectors.
 
 * The *Lambda* layer is commonly used when you need to perform custom computations or apply custom functions within a Keras model. It allows you to incorporate arbitrary operations into the model's computational graph, making it a versatile tool for defining complex models and custom loss functions.
 
