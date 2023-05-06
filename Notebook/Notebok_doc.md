@@ -32,6 +32,7 @@
 * Append the new rows in the new_rows list to the df.
 * Save the updated DataFrame to the train.csv file.
 * Return the updated df.
+
 **readImage()**
 * input:
 * path (str): path to the image file
@@ -43,6 +44,7 @@
 * convert the loaded image to a numpy array using the img_to_array function of keras.preprocessing.image module
 * normalize the pixel values in the range of 0 to 1 by dividing the array by 255
 * return the resulting numpy array
+
 **display_images()**
 * input: temp_df (pandas.DataFrame): a dataframe containing image path, caption and label
 * output:
@@ -61,6 +63,7 @@ None, it displays the images in a 5x5 grid with caption and label
 * set the title of the subplot using plt.title method with the created string
 * turn off the axis of the subplot using plt.axis("off")
 
+
 **Create_X_y()**
 * Input:
 * csv_path: a string indicating the path to a CSV file containing the image data and labels.
@@ -76,6 +79,8 @@ None, it displays the images in a 5x5 grid with caption and label
 * Preprocess the images by resizing and normalizing them.
 * Add the preprocessed image and label to the arrays.
 * Return the preprocessed image data and labels as numpy arrays.
+
+
 **make_pairs():**
 * *The function make_pairs(images, labels) takes in a set of images and their corresponding labels and returns pairs of images along with their labels. The pairs are generated such that one image in the pair is from the same class as the other image (positive pair) and the other image is from a different class (negative pair). This is useful for training a Siamese network, which learns to compare and classify pairs of images.*
 
@@ -105,7 +110,7 @@ a tuple of numpy arrays consisting of pairs of images and their corresponding la
 * Return the tuple of numpy arrays.
 * *training a Siamese network, which learns to compare two images and determine if they are similar or dissimilar. By generating pairs of images with known labels, we can train the Siamese network to learn these relationships and make accurate predictions on new image pairs.*
 
-* *MODEl Building-*
+* *MODEl Building:*
 **Siamese function**
 * This function defines a Siamese neural network architecture that takes as input images of shape (inputShape) and produces embeddings of size embeddingDim.
 
