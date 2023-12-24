@@ -45,9 +45,18 @@ Parameters:
 * Note: The code for running the app at the end is commented out, but you can uncomment it if you want to run the app directly * without using the Streamlit command.
 **Model:**
 * [Notebook](https://github.com/asjad895/SE_streamlit_deployment/tree/main/Notebook)
-## Deployment:
-* streamlit webapp is deployed on streamlit cloud,you can access it by this link-
+  
+**Result**
+**Note**. Result will be not similar due to image embedding vector we have mostly are unique u can see similarity score thats defined how much similar is queried and result image.
+```(0.1 means 10%)```
+  ![contentCompanion_sp](https://github.com/asjad895/SE_streamlit_deployment/assets/109430048/dd19fe0d-addb-4cde-aa9b-37fb21e686fd)
+  ![r1](https://github.com/asjad895/SE_streamlit_deployment/assets/109430048/6ced4d37-64f1-4035-84e4-443d03d70465)
+  ![r2](https://github.com/asjad895/SE_streamlit_deployment/assets/109430048/572ea53d-41b1-4b85-97d3-24a0efd358e9)
+  ![r3](https://github.com/asjad895/SE_streamlit_deployment/assets/109430048/8ec21848-0777-494f-8eff-12ae9f8a2b01)
 
+
+
+## Deployment:
 * [ContentCompanion](https://contentcompanion.streamlit.app/)
 
 # Demo:
